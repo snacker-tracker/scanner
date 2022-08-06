@@ -1,0 +1,14 @@
+[Unit]
+Description=Snacker-Tracker Service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/bin/env python3 /home/pi/snacker-tracker-scanner/scanner.py -d /dev/input/event0 --output file:///home/pi/snacker-tracker-scanner/events.log --output https://reporter.snacker-tracker.prod.k8s.fscker.org/v1/scans
+
+[Install]
+WantedBy=multi-user.target
