@@ -2,8 +2,13 @@ import evdev
 from evdev import InputDevice, categorize, ecodes  
 
 class File(object):
-  def __init__(self):
-    pass
+  def __init__(self, path):
+    self.path = path
+
+  def listen(self):
+    with open(self.path, 'r') as fp:
+      for line in fp.readlines():
+          yield line.strip()
 
 
 # Provided as an example taken from my own keyboard attached to a Centos 6 box:
