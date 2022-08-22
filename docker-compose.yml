@@ -12,3 +12,9 @@ services:
       TWINE_PASSWORD: ${TWINE_PASSWORD}
       TWINE_REPOSITORY_URL: ${TWINE_REPOSITORY_URL}
       TWINE_NON_INTERACTIVE: ${TWINE_NON_INTERACTIVE}
+
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1300
