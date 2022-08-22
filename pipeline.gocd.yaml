@@ -85,12 +85,6 @@ pipelines:
             - build:
                 source: dist/
 
-      - dummy-stage:
-          tasks:
-            - script: |
-                set -e
-
-
   snacker-tracker-scanner-publish-test:
     group: snacker-tracker-scanner
     label_template: "${upstream}"
@@ -104,7 +98,7 @@ pipelines:
     materials:
       upstream:
         pipeline: snacker-tracker-scanner-build
-        stage: dummy-stage
+        stage: build-package
       git-snacker-tracker-scanner:
         plugin_configuration:
           id: git.fb
