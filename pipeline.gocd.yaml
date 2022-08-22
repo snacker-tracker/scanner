@@ -32,6 +32,9 @@ pipelines:
                   ./auto/clean-up
                 }
 
+                trap finish EXIT
+
+
                 ./auto/in-docker ./auto/test
 
       - dummy-stage:
@@ -123,6 +126,13 @@ pipelines:
             - script: |
                 set -e
 
+                finish() {
+                  ./auto/clean-up
+                }
+
+                trap finish EXIT
+
+
                 ./auto/publish
 
   snacker-tracker-scanner-publish-prod:
@@ -158,5 +168,12 @@ pipelines:
                 destination: ./
             - script: |
                 set -e
+
+                finish() {
+                  ./auto/clean-up
+                }
+
+                trap finish EXIT
+
 
                 ./auto/publish
