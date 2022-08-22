@@ -33,9 +33,6 @@ pipelines:
                 }
 
                 ./auto/in-docker ./auto/test
-          artifacts:
-            - build:
-                source: dist/
 
       - dummy-stage:
           tasks:
