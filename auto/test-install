@@ -2,4 +2,4 @@
 
 set -e
 
-docker run -v `pwd`:/app/ -w /app/ python:3 pip install ./dist/snacker-tracker-scanner-0.1.0.tar.gz[evdev]
+docker run -v `pwd`:/app/ -w /app/ python:3 pip install ./dist/snacker-tracker-scanner-${APP_VERSION-0.1.0\-snapshot}.tar.gz[evdev]

@@ -1,3 +1,5 @@
 FROM python:3 as dev
 
-RUN pip install twine
+ADD ./requirements.txt ./
+RUN pip install -r requirements.txt
+RUN pip install twine pytest

@@ -32,12 +32,7 @@ pipelines:
                   ./auto/clean-up
                 }
 
-                trap finish EXIT
-
-                export VERSION="$(echo $GO_PIPELINE_LABEL | awk -F '-' '{print $1}')"
-
-                ./auto/in-docker ./auto/build
-                ./auto/test-install
+                ./auto/in-docker ./auto/test
           artifacts:
             - build:
                 source: dist/
@@ -82,7 +77,7 @@ pipelines:
 
                 trap finish EXIT
 
-                export VERSION="$(echo $GO_PIPELINE_LABEL | awk -F '-' '{print $1}')"
+                export APP_VERSION="$(echo $GO_PIPELINE_LABEL | awk -F '-' '{print $1}')"
 
                 ./auto/in-docker ./auto/build
                 ./auto/test-install
