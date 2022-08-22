@@ -24,7 +24,7 @@ history = open('HISTORY.md').read()
 
 setup(
     name='snacker-tracker-scanner',
-    version='0.1.0',
+    version=os.environ.get('APP_VERSION', "0.1.0-snapshot"),
     description='Pipe barcode scanner input events to a remote web service',
     long_description=readme + '\n\n' + doclink + '\n\n' + history,
     author='lmac',

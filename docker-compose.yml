@@ -6,3 +6,5 @@ services:
     working_dir: /app/
     volumes:
       - ./:/app/
+    environment:
+      APP_VERSION: ${APP_VERSION-0.1.0\-snapshot}
