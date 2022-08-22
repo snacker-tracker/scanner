@@ -80,7 +80,7 @@ pipelines:
                   ./auto/clean-up
                 }
 
-                trap EXIT finish
+                trap finish EXIT
 
                 export VERSION="$(echo $GO_PIPELINE_LABEL | awk -F '-' '{print $1}')"
 
