@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -e
+
+docker run -ti -v `pwd`:/app/ -w /app/ python:3 pip install ./dist/snacker-tracker-scanner-0.1.0.tar.gz[evdev]
