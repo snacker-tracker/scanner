@@ -23,7 +23,7 @@ pipelines:
         destination: ./
 
     stages:
-      - build-package:
+      - tests:
           tasks:
             - script: |
                 set -e
@@ -36,6 +36,20 @@ pipelines:
 
 
                 ./auto/in-docker ./auto/test
+            - script: |
+                set -e
+
+                finish() {
+                  ./auto/clean-up
+                }
+
+                trap finish EXIT
+
+                export APP_VERSION="$(echo $GO_PIPELINE_LABEL | awk -F '-' '{print $1}')"
+
+                ./auto/in-docker ./auto/build
+                ./auto/test-install
+
 
       - dummy-stage:
           tasks:
