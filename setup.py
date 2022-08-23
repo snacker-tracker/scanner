@@ -13,18 +13,23 @@ if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
     sys.exit()
 
-readme = open('README.md').read()
+readme = open('README.md').read().strip()
 doclink = """
 Documentation
 -------------
 
 The full documentation is at http://snacker-tracker-scanner.rtfd.org."""
 
-history = open('HISTORY.md').read()
+history = open('HISTORY.md').read().strip()
+
+try:
+    version = open('.package-version').read().strip()
+except:
+    version = "0.1.0-snapshot"
 
 setup(
     name='snacker-tracker-scanner',
-    version=os.environ.get('APP_VERSION', "0.1.0-snapshot"),
+    version=version,
     description='Pipe barcode scanner input events to a remote web service',
     long_description=readme + '\n\n' + doclink + '\n\n' + history,
     author='lmac',
@@ -48,11 +53,6 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: Implementation :: PyPy',
+        'Programming Language :: Python :: 3.9',
     ],
 )

@@ -2,4 +2,6 @@
 
 set -e
 
+echo "${APP_VERSION-0.1.0\-snapshot}" > .package-version
+
 python3 setup.py sdist
